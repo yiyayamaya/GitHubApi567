@@ -14,14 +14,12 @@ def get(user_id):
     # handle userId not existing
     if type(repos) is dict:
         return "can not find user"
-    res=""
+    res = ""
     for repo in repos:
-        res+="Repo: "+ repo["name"]+" Number of commits: "
-        #print("Repo: "+ repo["name"]+" Number of commits: ",end="")
+        res += "Repo: " + repo["name"] + " Number of commits: "
         repo_url = "https://api.github.com/repos/" + user_id + "/" + repo["name"] + "/commits"
         x = json.loads(requests.get(repo_url).text)
-        res+=str(len(x))+"\n"
-        #print(str(len(x))+"\n")
+        res += str(len(x)) + "\n"
     return res
 
 
