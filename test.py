@@ -16,12 +16,12 @@ def get(user_id):
         return "can not find user"
     res=""
     for repo in repos:
-        #res+="Repo: "+ repo["name"]+" Number of commits: "
-        print("Repo: "+ repo["name"]+" Number of commits: ",end="")
+        res+="Repo: "+ repo["name"]+" Number of commits: "
+        #print("Repo: "+ repo["name"]+" Number of commits: ",end="")
         repo_url = "https://api.github.com/repos/" + user_id + "/" + repo["name"] + "/commits"
         x = json.loads(requests.get(repo_url).text)
-        #res+=str(len(x))+"\n"
-        print(str(len(x))+"\n")
+        res+=str(len(x))+"\n"
+        #print(str(len(x))+"\n")
     return res
 
 
